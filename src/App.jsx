@@ -48,36 +48,29 @@ function App() {
     reader.readAsDataURL(file);
   }
 
-  const handleFileSubmit = (e) => {
-    uploadFile();
-  };
-
   const parseSocketData = (data) => {
     const msg = JSON.parse(data);
 
     switch (msg.action) {
       case "send-message":
         console.log("send-message");
-        console.log(msg);
         setFileURLs((pv) => [msg.message, ...pv]);
-        // downloadFile(msg.message, "a.pdf");
         break;
       case "leave-room":
         console.log("Left the room");
         break;
       case "created-room":
         console.log("Created room");
-        setRoomId(msg.message.data);
         toast("Scan the QR code with the other device");
         break;
       case "other-user-joined":
         console.log(`Someone connected to this network`);
-        toast.success("You are ready to channel your files!");
+        toast.success("Another device is connected to this channel!");
         setShrinkQR(true);
         setShowUploader(true);
         break;
       default:
-        console.log(msg);
+        toast.warn("A very weird message received");
     }
   };
 

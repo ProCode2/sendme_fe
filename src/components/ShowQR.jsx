@@ -18,8 +18,12 @@ const ShowQR = ({ customStyles, socket, roomId, setShrinkQR, shrinkQR }) => {
       {roomId ? (
         <QRCodeSVG
           onClick={() => setShrinkQR(!shrinkQR)}
-          className={`="transition-all ease-in-out duration-500" ${customStyles}`}
-          value={`http://localhost:5173/room/${roomId}`}
+          className={`="transition-all ease-in-out duration-500" shadow-md ${customStyles}`}
+          value={
+            window.location.host.includes("localhost")
+              ? `http://localhost:5173?rid=${roomId}`
+              : `https://${window.location.host}?rid=${roomId}`
+          }
         />
       ) : (
         <div
