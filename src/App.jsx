@@ -61,6 +61,7 @@ function App() {
         break;
       case "created-room":
         console.log("Created room");
+        setRoomId(msg.message.data);
         toast("Scan the QR code with the other device");
         break;
       case "other-user-joined":
