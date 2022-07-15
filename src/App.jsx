@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import FilePreview from "./components/FilePreview";
 import FileUploader from "./components/FileUploader";
@@ -82,6 +82,11 @@ function App() {
   };
 
   useEffect(() => {
+    // a weird way to check prod env or dev env change this later :)
+    let url =
+      (window.location.host.includes("localhost") ? "ws://" : "wss://") +
+      window.location.host +
+      "/ws";
     let ws = new WebSocket("ws://" + window.location.host + "/ws");
     ws.onopen = () => {
       if (!ws) return;
