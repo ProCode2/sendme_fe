@@ -126,9 +126,10 @@ function App() {
           }`}
         >
           <Link to="/">
-            <span className="font-mono font-bold tracking-tighter text-2xl md:text-3xl">
-              SendMe
-            </span>
+            <p className="font-mono font-bold tracking-tighter text-2xl md:text-3xl flex justify-start items-center">
+              <img className="w-12 h-12" src="/logo.svg" alt="logo" />
+              <span>SendMe</span>
+            </p>
           </Link>
         </div>
         <div className={"flex justify-center items-center"}>
