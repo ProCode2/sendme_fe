@@ -87,7 +87,7 @@ function App() {
       (window.location.host.includes("localhost") ? "ws://" : "wss://") +
       window.location.host +
       "/ws";
-    let ws = new WebSocket("ws://" + window.location.host + "/ws");
+    let ws = new WebSocket(url);
     ws.onopen = () => {
       if (!ws) return;
       ws.addEventListener("message", (e) => parseSocketData(e.data));
